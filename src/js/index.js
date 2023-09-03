@@ -2,7 +2,7 @@ const { async } = require("regenerator-runtime")
 
 
 function validateCep(cep) {
-    //Validar o CEP
+    // Validar o CEP
     const cepPattern = /^\d{8}$/;
     return cepPattern.test(cep);
 
@@ -47,7 +47,8 @@ function uploadResult(response) {
     result.innerHTML = `<h1><strong>CEP:</strong> ${response.zipcode}</h1>`+ 
     `<p><strong>Cidade:</strong>  ${response.city} </p>` +
     `<p><strong>Estado:</strong> ${response.state}</p>` +
-    `<p><strong>Nome do estado abreviado:</strong> ${response.stateShortname}</p>` 
+    `<p><strong>Nome do estado abreviado:</strong> ${response.stateShortname}</p>`+
+    `<p><strong>Rua:</strong> ${response.street}</p>`  
     ;  
 }
 
