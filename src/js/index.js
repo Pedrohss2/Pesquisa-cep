@@ -1,5 +1,5 @@
 const { async } = require("regenerator-runtime")
-
+import Error from "./error";
 
 function validateCep(cep) {
     // Validar o CEP
@@ -50,13 +50,4 @@ function uploadResult(response) {
     `<p><strong>Nome do estado abreviado:</strong> ${response.stateShortname}</p>`+
     `<p><strong>Rua:</strong> ${response.street}</p>`  
     ;  
-}
-
-class Error {
-    constructor(msg) {
-        this.msg = msg;
-    }
-    showError() {
-        console.log(this.msg)
-    }
 }
