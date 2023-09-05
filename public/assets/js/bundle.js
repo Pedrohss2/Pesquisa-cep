@@ -769,6 +769,29 @@ try {
 }
 
 
+/***/ }),
+
+/***/ "./src/js/error.js":
+/*!*************************!*\
+  !*** ./src/js/error.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Error)
+/* harmony export */ });
+class Error {
+    constructor(msg) {
+        this.msg = msg;
+    }
+    showError() {
+        console.log(this.msg)
+    }
+}
+// ....
+
 /***/ })
 
 /******/ 	});
@@ -798,14 +821,46 @@ try {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./error */ "./src/js/error.js");
 const { async } = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js")
-
+;
 
 function validateCep(cep) {
     // Validar o CEP
@@ -822,7 +877,7 @@ async function upload() {
         const isClean = cep.value === ''? alert('Campo cep vazio'): '';
         const href = await fetch(`https://brasilaberto.com/api/v1/zipcode/${cep.value}`)
       
-        if(href.status !== 200) throw new Error('PAGE NOT FOUND!');
+        if(href.status !== 200) throw new _error__WEBPACK_IMPORTED_MODULE_0__["default"]('PAGE NOT FOUND!');
             
         let valor = await href.json();
 
@@ -832,11 +887,11 @@ async function upload() {
          else {
              result.innerHTML = 'Cep inexistente';
              result.classList.add('answers-invalid');
-             throw new Error('ERROR -  CEP INEXITENTE') 
+             throw new _error__WEBPACK_IMPORTED_MODULE_0__["default"]('ERROR -  CEP INEXITENTE') 
          }
     }
     catch(e) {
-        console.log(new Error(e))
+        console.log(new _error__WEBPACK_IMPORTED_MODULE_0__["default"](e))
     }
   
 }
@@ -858,14 +913,6 @@ function uploadResult(response) {
     ;  
 }
 
-class Error {
-    constructor(msg) {
-        this.msg = msg;
-    }
-    showError() {
-        console.log(this.msg)
-    }
-}
 })();
 
 /******/ })()
